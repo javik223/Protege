@@ -1,0 +1,48 @@
+/**
+* Settings are gotten from ../settings.scss file
+* Settings include the following items:
+* $base-font-family
+* $base(font-size, line, line-height, font-weight)
+* $h1(font-size, font-weight, line, lines)
+*	
+**/
+body{
+	font-size: m($base, font-size);
+	line-height: m($base, line-height);
+	font-weight: m($base, font-weight);
+	font-family: $base-font-family;
+}
+
+p {
+	font-size: inherit;
+	line-height: 1.7;
+	margin-bottom: $padding;
+}
+
+p.small {
+	font-size: 90%;
+}
+
+h1 {
+	@include header($h1);
+}
+h2 {
+	@include header($h2);
+}
+h3 {
+	@include header($h3);
+}
+h4 {
+	@include header($h4);
+}
+h5 {
+	@include header($h5);
+}
+
+.light {
+	font-weight: 100;
+}
+
+.primary-color {
+	color: color($primary);
+}

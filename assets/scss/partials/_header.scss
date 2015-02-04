@@ -1,0 +1,165 @@
+.header {
+	width: 100%;
+	float: left;
+	padding-top: $padding;
+	padding-bottom: $padding;
+	position: relative;
+
+	// Hide name title
+	.logo {
+		float: left;
+
+		h1 {
+			width: 0;
+			height: 0;
+			font-size: 0;
+			text-indent: -99999999px;
+			display: none;
+		}
+	}
+
+	// Float navigation element to the right
+	.nav {
+		float: right;
+		margin-top: $padding;
+		display: none;
+
+		@media #{$large-up} {
+			display: block;
+		}
+
+		&_links {
+			font-size: rem-calc(12);
+
+			li {
+				display: block;
+				padding-right: $padding * 0.5;
+				text-transform: uppercase;
+				font-weight: bold;
+
+				// Remove padding from last link element
+				&:last-child {
+					padding-right: 0;
+				}
+
+				@media #{$large-up} {
+					@include inline-block;
+					padding-right: $padding * 0.5;
+					text-transform: uppercase;
+					font-weight: bold;
+
+					// Remove padding from last link element
+					&:last-child {
+						padding-right: 0;
+					}
+				}
+			}
+
+			a {
+				color: color($gray);
+
+				&:hover {
+					color: color($primary);
+				}
+			}
+		}
+
+		&-active {
+			display: block !important;
+			position: absolute;
+			text-align: center;
+			width: 100%;
+			margin-left: -$padding * 1.5;
+			background-color: color($white);
+			margin-top: $padding * 3.7;
+			padding-top: $padding * 2;
+			padding-bottom: $padding * 2;
+
+			@media #{$medium-only} {
+				margin-left: -$padding;
+			}
+
+			.nav_links {
+				font-size: rem-calc(20);
+				line-height: 1.5;
+
+				li {
+					margin-bottom: $padding;
+					border-bottom: 1px dash lighte
+				}
+			}
+		}
+	}
+
+	.menu {
+		position: absolute;
+	    z-index: 1000;
+	    float: right;
+	    width: 30px;
+	    height: 30px;
+	    cursor: pointer;
+	    right: rem-calc(20);
+	    top: 50%;
+	    @include transform( translateY(-50%) );
+
+	    @media #{$large-up} {
+	    	right: 0;
+	    	display: none;
+	    }
+
+	    .bars {
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 30px;
+		    height: 100%;
+
+		    span {
+		        position: absolute;
+		        top: 50%;
+		        left: 50%;
+		        display: block;
+
+		        width: 26px;
+		        height: 1.3px;
+		        margin-left: -13px;
+		        margin-top: -1px;
+
+		        background-color: color($primary);
+		        @include transition ( all 0.15s ease);
+		    }
+		    span:first-child {
+		      	margin-top: -7px;
+		    }
+		    span:nth-child(2) {
+		    	@include transition-delay( .075s );
+		    }
+		    span:last-child {
+		      	margin-top: 5px;
+		     	@include transition-delay( .015s );
+
+		    }
+		}
+
+		&.active {
+			.bars {
+				span {
+				     width: 0;
+				     margin-left: -15px;
+				  }
+				  
+				  span:first-child {
+				    margin-top: 0px;
+				    width: 30px;
+				    @include transform( rotate(45deg) );
+				  }
+				  span:last-child {
+				    margin-top: 0px;
+				    width: 30px;
+				    @include transform( rotate(-45deg) );
+				    @include transition-delay( .15s );
+				  }
+			}
+		}
+	}
+}

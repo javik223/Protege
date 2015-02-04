@@ -1,0 +1,85 @@
+$padding: rem-calc(20);
+$grid-columns: 12;
+
+
+// Base font properties
+$base: (
+	font-size: rem-calc(16),
+	line: rem-calc(22),
+	line-height: rem-calc(22),
+	font-weight: 300
+);
+
+$base-font-family: Lato, Helvetica, sans;
+
+// Header elements
+$h1: (
+	font-size: rem-calc(76),
+	font-weight: 200,
+	line: 25,
+	lines: 4
+);
+$h2: (
+	font-size: rem-calc(47),
+	font-weight: 200,
+	line: 25,
+	lines: 2
+	);
+$h3: (
+	font-size: rem-calc(29),
+	font-weight: 200,
+	line: 25,
+	lines: 2
+);
+
+$h4: (
+	font-size: rem-calc(18),
+	font-weight: 200,
+	line: 16,
+	lines: 1.6
+);
+
+$h5: (
+	font-size: rem-calc(16),
+	font-weight: 200,
+	line: 16,
+	lines: 1
+);
+
+.spaced-heading {
+	letter-spacing: 3px;
+}
+
+// Links
+
+a {
+	text-decoration: none;
+}
+
+strong {
+	font-weight: bold;
+}
+
+@function m($elem, $prop) {
+	@if map-has-key($elem, $prop){
+		@return map-get($elem, $prop);
+	}
+
+	@warn "Unknown `#{$prop}` in #{$elem}";
+	@return null;
+}
+
+
+@mixin header($elem) {
+	font-size: m($elem, font-size);
+	font-weight: m($elem, font-weight);
+	line-height: rem-calc(m($elem, line) * m($elem, lines));
+
+	@if $elem == $h1 or $elem == $h2 {
+		margin-top: rem-calc(2 * m($elem, line));
+	} @else {
+		margin-top: rem-calc(1 * m($elem, line));
+	}
+
+	margin-bottom: rem-calc(1 * m($elem, lines));
+}

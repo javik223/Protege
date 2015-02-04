@@ -1,0 +1,68 @@
+.hero {
+	width: 100%;
+	float: left;
+	//margin-bottom: $padding * 2;
+	color: color($white);
+	font-weight: 100;
+	padding-bottom: $padding * 3;
+	min-height: 350;
+
+	@media #{$medium-only} {
+		background-size: cover;
+		background-position: top center;
+	}
+
+	@media #{$medium-up} {
+		min-height: rem-calc(500);
+		padding-top: $padding * 2;
+	}
+
+	h2 {
+		@media #{$small-only} {
+			font-size: rem-calc(30);
+			line-height: 1.2;
+		}
+	}
+
+	&-home {
+		background: image-url("protege-professionals.jpg") no-repeat;
+	}
+
+	&-about {
+		background: image-url("protege-motivated-professional.jpg") no-repeat;
+	}
+
+	&-services {
+		background: image-url("protege-business-people.jpg") no-repeat;
+	}
+
+	// Performance Coaching
+	&-pc {
+		background: image-url("protege-performance-coaching.jpg");
+		color: color($gray);
+		padding-left: $padding * 2;
+
+		h3 {
+			color: color($primary);
+		}
+	}
+
+	// Human Resources
+	&-hr {
+		background: image-url("protege-hr.jpg") no-repeat;
+		background-position: top right;
+	}
+
+	// Executives
+	&-ex {
+		background: image-url("protege-professionals.jpg") no-repeat;
+		background-position: top right;
+		padding-left: $padding * 2;
+	}
+
+	// PC - Performance Coaching
+	&-home, &-about, &-services, &-pc, &-hr, &-ex {
+		background-size: cover;
+		background-position: top center;
+	}
+}

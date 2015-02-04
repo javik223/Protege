@@ -1,0 +1,37 @@
+$gray: (
+	normal: #9C9C9C,
+	dark: darken(#9C9C9C, 10%),
+	light: lighten(#9C9C9C, 10%)
+);
+
+$primary: (
+	normal: #F7941D,
+	dark: darken(#F7941D, 10%),
+	light: lighten(#F7941D, 10%)
+);
+
+$secondary: (
+	normal: #B7C4D3,
+	dark: darken(#B7C4D3, 10%),
+	light: lighten(#B7C4D3, 10%)
+);
+
+$white: (
+	normal: #FFFFFF,
+);
+
+
+@function color($col, $val: normal) {
+	@if map-has-key($col, $val) {
+		@return map-get($col, $val)
+	}
+
+	@return null;;
+}
+
+
+// Colors
+// color-primary 
+.c-p {
+	color: color($primary);
+}

@@ -1,0 +1,45 @@
+// Promoted News & Events
+.pne {
+	@extend .col;
+	@extend .m-8-12;
+	@extend .m-offset-2;
+
+	&_item {
+		border-bottom: 1px solid lighten(color($gray, light), 20%);
+		margin-bottom: $padding * 4;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		h1 {
+			@extend h3;
+			text-align: center;
+		}
+
+		.date {
+			text-align: center;
+			font-weight: 400;
+			margin-bottom: $padding * 3;
+
+			span {
+				border-bottom: 1px solid lighten(color($gray, light), 20%);
+				font-size: 70%;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				padding-bottom: $padding;
+			}
+		}
+
+		img {
+			padding-bottom: $padding;
+			text-align: center;
+		}
+	}
+
+	.more {
+		@include inline-block;
+		padding: $padding * 0.5 $padding;
+		margin-top: $padding * 2;
+	}
+}

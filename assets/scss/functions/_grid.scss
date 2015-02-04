@@ -1,0 +1,79 @@
+* {
+	@include box-sizing( border-box );
+}
+.container {
+	width: 100%;
+	max-width: 100% !important;
+	float: left;
+}
+.row {
+	width: 100%;
+	max-width: rem-calc(1100);
+	margin: auto auto;
+	@include clearfix;
+}
+.collapse {
+	padding: 0 !important;
+}
+.col {
+	width: 100%;
+	float: left;
+}
+[class*='col-'], [class*='m-']:last-of-type, [class*='s-']:last-of-type {
+	padding-right: $padding;
+}
+[class*='col-']:last-of-type, [class*='m-']:last-of-type, [class*='s-']:last-of-type {
+  padding-right: 0;
+  float: right;
+}
+.end {
+	float: left !important;
+}
+
+@for $i from 0 through $grid-columns {
+	.s-#{$i}-#{$grid-columns} {
+		width: ( $i / $grid-columns ) * 100%;
+		float: left;
+	}
+	.s-offset-#{$i} {
+		margin-left: ( $i / $grid-columns ) * 100%;
+	}
+}
+@media #{$medium-up} {
+	@for $i from 0 through $grid-columns {
+		.m-#{$i}-#{$grid-columns} {
+			width: ( $i / $grid-columns ) * 100%;
+			float: left;
+		}
+		.m-offset-#{$i} {
+			margin-left: ( $i / $grid-columns ) * 100%;
+		}
+	}
+}
+@media #{$large-up} {
+	@for $i from 0 through $grid-columns {
+		.l-#{$i}-#{$grid-columns} {
+			width: ( $i / $grid-columns ) * 100%;
+			float: left;
+		}
+		.l-offset-#{$i} {
+			margin-left: ( $i / $grid-columns ) * 100%;
+		}
+	}
+}
+
+//Add extra padding for mobile and tablet
+.m-pad {
+	@media #{$small-only} {
+		padding-left: rem-calc(30);
+		padding-right: rem-calc(30);
+	}
+}
+.mt-pad {
+	@extend .m-pad; 
+
+	@media #{$medium-only} {
+		padding-left: rem-calc(20);
+		padding-right: rem-calc(20);
+	}
+}

@@ -1,0 +1,44 @@
+.quote-blocks {
+	@extend .row;
+
+	.item {
+		@extend .col;
+		@extend .m-4-12;
+		background-color: lighten(color($secondary, light), 10%);
+		padding: $padding;
+		border: 6px solid color($white);
+		@include transition ( all 0.6s ease-out );
+
+		&:hover {
+			background-color: color($secondary);
+			color: color($white);
+			@include transform( scale(1.2) );
+
+			blockquote {
+				color: color($white);
+			}
+		}
+
+
+		blockquote {
+			font-size: 150%;
+			line-height: 1.5;
+			font-weight: 300;
+			font-style: italic;
+			color: color($gray, light);
+
+			cite {
+				font-size: 50%;
+				line-height: 1;
+				display: block;
+				text-transform: uppercase;
+				margin-top: $padding * 3;
+				font-weight: 300;
+
+				&:before {
+					content: '- ';
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,149 @@
+.featured {
+	@extend .col;
+	@extend .m-8-12;
+	@extend .m-offset-2;
+	@extend .end;
+
+	img {
+		margin-bottom: $padding;
+	}
+
+	h1 {
+		@extend h3;
+		margin-bottom: $padding;
+		line-height: 1.5;
+	}
+
+	.button {
+		@include inline-block;
+		margin-top: $padding * 1.2;
+		padding: $padding * 0.4 $padding * 2;
+	}
+}
+
+// Promoted posts
+
+.pp {
+	padding-bottom: $padding;
+	margin-bottom: $padding;
+	border-bottom: 1px solid lighten(color($gray, light), 20%);
+	h3, .more {
+		text-align: center;
+		margin-bottom: $padding;
+	}
+
+	.more {
+		text-transform: uppercase;
+		color: color($gray);
+		margin: auto auto;
+		font-size: 80%;
+
+		&:hover {
+			color: color($primary);
+		}
+
+		span {
+			padding-left: $padding * 0.5;
+		}
+	}
+
+}
+.pp-blog, .pp-resources {
+	.pp_item {
+		@extend .col;
+		padding-left: $padding * 0.5;
+		padding-right: $padding * 0.5;
+		padding-bottom: $padding;
+
+		&_img {
+			overflow: hidden;
+		}
+
+		img {
+			@include transition ( transform 2.0s ease-in-out );
+		}
+
+		&:hover {
+			img {
+				@include transform( scale(1.3) );
+			}
+		}
+	}
+}
+.pp-blog, {
+	.pp_item {
+		@extend .m-4-12;
+		padding-bottom: $padding;
+	}
+
+	a {
+		font-weight: 400;
+		color: color($primary);
+		@include inline-block;
+		margin-top: $padding;
+
+		&:hover {
+			color: color($primary, dark);
+		}
+	}
+}
+
+.pp-resources {
+
+	.pp_item {
+		@extend .s-6-12;
+		@extend .m-3-12;
+	}
+
+	a {
+		font-weight: 400;
+		color: color($gray);
+		@include inline-block;
+		margin-top: $padding;
+
+		&:hover {
+			color: color($primary);
+		}
+	}
+}
+
+.pp-quote, .pp-quote-large {
+	blockquote {
+		font-size: 150%;
+		line-height: 1.5;
+		font-weight: 100;
+		font-style: italic;
+		text-align: center;
+		color: color($gray, light);
+
+		cite {
+			font-size: 50%;
+			line-height: 1;
+			display: block;
+			text-transform: uppercase;
+			text-align: center;
+			margin-top: $padding;
+			font-weight: 300;
+
+			&:before {
+				content: '- ';
+			}
+		}
+	}
+}
+
+.pp-quote {
+	@extend .col;
+	@extend .m-6-12;
+	@extend .m-offset-3;
+}
+
+.pp-quote-large {
+		@extend .m-8-12;
+		@extend .m-offset-2;
+		@extend .end;
+
+		border-bottom: none;
+		margin-bottom: $padding * 4;
+		margin-top: $padding * 3;
+}
