@@ -1,0 +1,53 @@
+@import "bourbon";
+@import "compass/reset";
+@import "functions/global";
+@import "_settings";
+@import "functions/grid";
+
+// Partials
+
+@import "partials/colors";
+@import "partials/type";
+
+body {
+	color: color($gray);
+}
+
+// Header 
+@import "partials/header";
+
+// Mini Nav
+@import "partials/mini-nav";
+
+// Homepage slider
+@import "partials/slider";
+
+// Hero containers
+@import "partials/hero";
+
+// ICONS 
+@import "partials/icons";
+
+// Buttons
+@import "partials/buttons";
+
+// Page Headers
+@import "partials/page-header.scss";
+
+// Miscellenous styles
+@import "partials/misc";
+
+// Footer 
+@import "partials/footer";
+
+
+// Special Pages
+
+// Insights
+@import "partials/insights";
+
+// News & Events
+@import "partials/news-events";
+
+// Quotes
+@import "partials/quotes";

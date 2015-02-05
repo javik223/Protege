@@ -1,0 +1,35 @@
+.footer {
+	font-size: rem-calc(12);
+	float: left;
+	width: 100%;
+	margin-top: rem-calc(60);
+	margin-bottom: rem-calc(60);
+
+	ul {
+		padding-bottom: $padding * 0.2;
+	}
+
+	a {
+		color: color($gray, light);
+	}
+
+	.social-icons {
+		text-align: right;
+		font-size: rem-calc(20);
+
+		span {
+			padding-right: rem-calc(30);
+
+			&:last-child {
+				padding-right: 0;
+			}
+		}
+	}
+
+	.copyright {
+		margin-top: $padding;
+		padding-top: $padding;
+		border-top: 1px solid lighten(color($gray, light), 25%);
+		color: lighten(color($gray), 20%);
+	}
+}

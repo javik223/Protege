@@ -1,0 +1,20 @@
+.page-header{
+	text-align: center;
+	background: image-url("page-header-bg.jpg") no-repeat;
+	background-size: cover;
+	padding: $padding * 0.5 $padding;
+	float: left;
+	width: 100%;
+	margin-top: 0 !important;
+	font-size: rem-calc(30);
+	color: color($white);
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	font-weight: 400;
+	margin-bottom: 0;
+	line-height: 1.5;
+
+	@media #{$medium-up} {
+		padding: $padding * 2 $padding;
+	}
+}

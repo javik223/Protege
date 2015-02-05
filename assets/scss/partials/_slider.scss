@@ -1,0 +1,89 @@
+.slider {
+	width: 100%;
+	float: left;
+	color: color($white);
+
+	h2 {
+		@media #{$small-only} {
+			font-size: rem-calc(30);
+			line-height: 1.2;
+		}
+	}
+
+	h4 {
+		@media #{$small-only} {
+			font-size: rem-calc(15);
+			line-height: 1.6;
+		}
+	}
+}
+
+.slide {
+	position: relative;
+	//height: 300px;
+	overflow: hidden;
+
+	img {
+		position: relative;
+
+		@media #{$small-only} {
+			width: 200%;
+			max-width: none;
+			right: 50%;
+		}
+
+		@media #{$medium-only} {
+			width: 160%;
+			max-width: none;
+			right: 30%;
+		}
+	}
+
+	&-image {
+
+	}
+	&_content_innerwrapper {
+		@extend .row;
+		@extend .mt-pad;
+	}
+	&_content_wrapper {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		float: left;
+	}
+	&_content {
+		@extend .col;
+		@extend .s-7-12;
+		@extend .m-5-12;
+		@extend .l-4-12;
+		position: absolute;
+		
+		@media #{$medium-up} {
+			top: $padding;
+		}
+	}
+}
+
+.slider-pager {
+	width: 100%;
+	text-align: center;
+	
+	a {
+		width: 10px;
+		height: 10px;
+		background-color: color($gray);
+		border-radius: 50%;
+		line-height: 0;
+		overflow: hidden;
+		margin-top: $padding;
+		@include inline-block;
+		color: transparent;
+		margin-right: $padding * 0.5;
+		@include transition ( all 0.3s ease-in-out );
+
+		&.activeSlide {
+			background-color: color($primary);
+		}
+	}
+}
