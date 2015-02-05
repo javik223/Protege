@@ -1,14 +1,15 @@
 $(function(){
-	var $menu, $slider, $menuVisible, $nav, animateMenu ;
+	var $menu, $slider, $menuVisible, $nav, animateMenu, $quotes ;
 
     $slider = $('.slider');
     $menu = $(".menu");
     $menuVisible = false;
     $nav = $(".nav");
+    $quotes = $(".quote-blocks");
 
     $slider.cycle({
     	speed: 600,
-    	manualSpeed: 100,
+    	manualSpeed: 300,
     	delay: 2,
     	fx: 'fade',
     	swipe: true,
@@ -50,5 +51,9 @@ $(function(){
    		animateMenu = animateM();
    });
   
+  $quotes.packery({
+    itemSelector: '.item',
+    gutter: 0
+  });
 
 });

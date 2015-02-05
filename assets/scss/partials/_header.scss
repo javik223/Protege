@@ -23,6 +23,7 @@
 		float: right;
 		margin-top: $padding;
 		display: none;
+		z-index: 1000;
 
 		@media #{$large-up} {
 			display: block;

@@ -13,6 +13,7 @@
 			background-color: color($secondary);
 			color: color($white);
 			@include transform( scale(1.2) );
+			z-index: 2000;
 
 			blockquote {
 				color: color($white);

@@ -145,5 +145,46 @@
 
 		border-bottom: none;
 		margin-bottom: $padding * 4;
-		margin-top: $padding * 3;
+}
+
+.blog-post {
+	&_title {
+		@extend h2;
+		padding-bottom: $padding !important;
+	}
+
+	&_details {
+		@extend .col;
+		@extend .m-3-12;
+		padding-top: $padding;
+		border-top: 1px solid lighten(color($gray, light), 20%);
+		margin-right: $padding !important;
+	}
+
+	&_author {
+		//@extend .primary-color;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+	}
+
+	&_content {
+		@extend .col;
+		@extend .m-8-12;
+
+		img {
+			margin-bottom: $padding;
+		}
+
+		h4 {
+			font-weight: bold;
+		}
+
+		ol {
+			li {
+				list-style-type: decimal;
+				margin-left: $padding;
+				padding-left: $padding;
+			}
+		}
+	}
 }
