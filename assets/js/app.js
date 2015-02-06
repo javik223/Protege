@@ -46,11 +46,7 @@ $(function(){
     **/
 
    animateMenu = animateM();
-
-   $(window).on('resize', function(){
-   		animateMenu = animateM();
-   });
-  
+   
   $quotes.packery({
     itemSelector: '.item',
     gutter: 0

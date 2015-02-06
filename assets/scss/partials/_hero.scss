@@ -17,9 +17,9 @@
 		padding-top: $padding * 2;
 	}
 
-	h2 {
+	h3 {
 		@media #{$small-only} {
-			font-size: rem-calc(30);
+			font-size: rem-calc(20);
 			line-height: 1.2;
 		}
 	}

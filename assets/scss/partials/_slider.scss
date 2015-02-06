@@ -5,8 +5,9 @@
 
 	h2 {
 		@media #{$small-only} {
-			font-size: rem-calc(30);
+			font-size: rem-calc(25);
 			line-height: 1.2;
+			margin-top: rem-calc(20);
 		}
 	}
 
@@ -22,6 +23,15 @@
 	position: relative;
 	//height: 300px;
 	overflow: hidden;
+	min-height: rem-calc(250);
+
+	@media #{$medium-only} {
+		min-height: rem-calc(400);
+	}
+
+	@media #{$large-up} {
+		min-height: rem-calc(500);
+	}
 
 	img {
 		position: relative;
