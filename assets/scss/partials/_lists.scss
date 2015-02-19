@@ -1,0 +1,19 @@
+.list-primary {
+	li {
+		font-weight: bold;
+		margin-bottom: $padding * 0.5;
+		//color: color($primary);
+		margin-left: $padding;
+
+		&:before {
+			width: 7px;
+			height: 7px;
+			content: '';
+			background-color: color($primary);
+			@include inline-block;
+			border-radius: 50%;
+			margin-right: $padding;
+			margin-left: $padding * -1;
+		}
+	}
+}

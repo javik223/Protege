@@ -2,17 +2,24 @@
 	width: 100%;
 	float: left;
 	color: color($white);
+	height: rem-calc(350);
+	overflow-y: hidden;
 
 	h2 {
 		@media #{$small-only} {
 			font-size: rem-calc(30);
 			line-height: 1.2;
 		}
+
+		@media #{$medium-up} {
+			font-size: rem-calc(70);
+			line-height: 1;
+		}
 	}
 
 	h4 {
 		@media #{$small-only} {
-			font-size: rem-calc(15);
+			font-size: rem-calc(14);
 			line-height: 1.6;
 		}
 	}

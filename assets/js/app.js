@@ -1,20 +1,11 @@
 $(function(){
-	var $menu, $slider, $menuVisible, $nav, animateMenu, $quotes ;
+	var $menu, $menuVisible, $nav, animateMenu, $quotes;
 
-    $slider = $('.slider');
+    $slider = $(".slider");
     $menu = $(".menu");
     $menuVisible = false;
     $nav = $(".nav");
     $quotes = $(".quote-blocks");
-
-    $slider.cycle({
-    	speed: 600,
-    	manualSpeed: 300,
-    	delay: 2,
-    	fx: 'fade',
-    	swipe: true,
-    	pager: '.slider-pager'
-    });
 
     $menu.on('click', function(){
     	if ($menuVisible === false) {
@@ -56,4 +47,27 @@ $(function(){
     gutter: 0
   });
 
+});
+
+$(window).load(function(){
+    var slider;
+
+    $slider = $('.slider');
+
+    try {
+        $slider.cycle({
+            speed: 600,
+            manualSpeed: 300,
+            delay: 5,
+            fx: 'fade',
+            swipe: true,
+            pager: '.slider-pager',
+            autoHeight: "calc",
+            pauseOnHover: true
+        });
+    } catch (e) {
+        console.log(e);
+    }
+
+    $slider.animate({height: $slider.get(0).scrollHeight}, 1000);
 });

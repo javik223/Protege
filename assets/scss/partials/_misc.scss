@@ -83,6 +83,7 @@
 	&_item {
 		@extend .col;
 		color: color($gray);
+		cursor: pointer;
 
 		@media #{$medium-up} {
 			@extend .m-4-12;
@@ -106,6 +107,7 @@
 			}
 		}
 	}
+	
 	&_heading {
 		text-transform: uppercase;
 		color: color($primary);
@@ -194,6 +196,10 @@
 		&:last-child {
 			margin-bottom: 0;
 			border-bottom: none;
+		}
+
+		a {
+			text-decoration: none;
 		}
 	}
 

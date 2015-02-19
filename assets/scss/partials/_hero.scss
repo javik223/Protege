@@ -39,12 +39,8 @@
 	// Performance Coaching
 	&-pc {
 		background: image-url("protege-performance-coaching.jpg");
-		color: color($gray);
+		//color: color($gray);
 		padding-left: $padding * 2;
-
-		h3 {
-			color: color($primary);
-		}
 	}
 
 	// Human Resources
@@ -60,8 +56,13 @@
 		padding-left: $padding * 2;
 	}
 
-	// PC - Performance Coaching
-	&-home, &-about, &-services, &-pc, &-hr, &-ex {
+	&-cp {
+		background: image-url("protege-convicted-professionals.jpg") no-repeat;
+		background-position: top right;
+		padding-left: $padding * 2;
+	}
+
+	&-home, &-about, &-services, &-pc, &-hr, &-ex, &-cp {
 		background-size: cover;
 		background-position: top center;
 	}
