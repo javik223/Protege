@@ -1,0 +1,53 @@
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+
+
+{% if campaign is defined %}
+	{% set title = "Edit Notification" %}
+	{% set campaignId = campaign.id %}
+{% else %}
+	{% set title = "Edit Notification" %}
+	{% set campaign = craft.sproutemail.getCampaignById(campaignId) %}
+	{% set campaignId = campaign.id %}	
+{% endif %}
+
+{% set crumbs = [
+	{ label: "Sprout Email"|t, url: url('sproutemail/notifications') },
+] %}
+
+{% set tabs = {
+    general: { 
+      label: "Notification Info"|t,
+      url: url('sproutemail/notifications/edit/' ~ campaignId),
+      class: 'notificationinfo'
+    },
+    template:    { 
+      label: "Email Template"|t,
+      url: url('sproutemail/notifications/edit/' ~ campaignId ~ '/template'),
+      class: 'template'
+    },
+    recipients:    { 
+      label: "Recipients"|t,
+      url: url('sproutemail/notifications/edit/' ~ campaignId ~ '/recipients'),
+      class: 'recipients'
+    },
+} %}
+
+{% if craft.request.getSegment('5') %}
+    {% set selectedTab = craft.request.getSegment('5') %}
+{% endif %}
+
+
+{% set content %}
+
+{% if craft.request.getSegment('5') == 'template' %}
+    {% include "sproutemail/notifications/tabs/_template" %}
+{% elseif craft.request.getSegment('5') == 'recipients' %} 
+    {% include "sproutemail/notifications/tabs/_recipients" %}
+{% else %}
+    {% include "sproutemail/notifications/tabs/_info" %}
+{% endif %}
+
+{% endset %}
+
+{% includeJsResource "sproutemail/js/sproutemail.js" %}
