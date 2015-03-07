@@ -1,33 +1,134 @@
-{#
- # Homepage template
- # ---------------
- #
- # When this template gets loaded, it will be because someone has accessed
- # http://yoursite.com/ (without any URI). Craft checks to see if you have
- # a Single section set to be the Homepage (as you do, by default), and
- # loads the section’s Template (this file). A special ‘entry’ variable
- # will already be set for you, assigned to the Homepage entry.
- #
- # It's worth noting that even if you didn't have a Homepage Single section,
- # as long as this template remains at craft/templates/index.html, it
- # would still be the one to get loaded when accessing http://yoursite.com/,
- # albeit without an ‘entry’ variable already set for you.
- #
- # See this page for more details on how Craft routes requests:
- # http://buildwithcraft.com/docs/routing
- #}
-
 {% extends "_layout" %}
-
 {% block content %}
-	<h1>{{ entry.title }}</h1>
+{% cache %}
+{% set slides = entry.slider %}
+<div class="slider">
+{% for slide in slides %}
+	<div class="slide">
+		<div class="slide_image">
+			<img src="{{ slide.image.first().url }}" alt="{{ slide.header }}">
+		</div>
 
-	{{ entry.body }}
+		<div class="slide_content_wrapper">
+			<div class="slide_content_innerwrapper">
+				<div class="slide_content">
+					<h2>{{ slide.header }}</h2>
 
-	<h2>Recent News</h2>
-	<ul>
-		{% for entry in craft.entries.section('news').limit(5).find() %}
-			<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
-		{% endfor %}
-	</ul>
+					<h4>{{ slide.subhead }}</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endfor %}
+</div>
+<div class="row center slider-pager">
+	
+</div>
+
+<h4 class="intro">
+	{{ entry.intro }}
+</h4>
+
+{% set widgets = entry.programWidget %}
+<!-- Programmes Widget begins -->
+<div class="row prog-widg mt-pad">
+
+	{% for widget in widgets %}
+	<a class="prog-widg_item" href="{{ widget.widgetLink }}" title="Protege - {{ widget.widgetTitle }}">
+		<h4 class="prog-widg_heading">{{ widget.widgetTitle}}</h4>
+
+		<div class="prog-widg_item_img">
+			<img src="{{ widget.widgetImage.first().url }}" alt="{{ widget.widgetLink}}">
+		</div>
+
+		{{ widget.widgetText }}
+	</a>
+	{% endfor %}
+</div>
+
+
+<!-- Programmes Widget ends -->
+
+<div class="row isc"> <!-- Insights - Stories container -->
+	<div class="insights-widg">
+		<h3>Insights</h3>
+
+
+		{% set featuredInsights = craft.entries.section('blog').limit(2) %}
+
+		{% for post in featuredInsights %}
+		<div class="insights-widg_item">
+				<div class="insights-widg_item_thumb">
+					<img src="{{ post.blogCoverImage.first().getUrl('thumbSmall') }}" alt="{{ post.title }}">
+				</div>
+
+				<div class="insights-widg_item_summary">
+					<h4>{{ post.title }}</h4>
+
+					<p class="small">{{ post.blogIntro|hacksaw('100') }}</p>
+				</div>
+		</div>
+		{% endfor %}		
+	</div>
+
+	<!-- Success Story -->
+	<div class="sstory">
+		<h3 class="sstory_heading">Success Story</h3>
+
+		<p>Protege Professionals  provided me with the information and direction to figure out why I didn’t like my current job. But, that’s not all.</p>
+
+		<div class="sstory_author">
+			<img src="/assets/img/ssauthor.png" alt="Felix Adedeji" width="60">
+
+			<span class="span">Felix Adedeji</span>
+		</div>
+	</div>
+</div>
+
+{% set quote = craft.entries.section('quotes').first() %}
+<div class="row pbb">
+	<div class="col m-12-12 l-4-12 mt-pad hm-quotes">
+		<h3>#Protege Quotes</h3>
+
+		<blockquote class="small">
+			{{ quote.quoteText }}<cite>{{ quote.quoteAuthor }}</cite>
+		</blockquote>
+
+		<a href="/insights/quotes">View more quotes</a>
+	</div>
+
+	<div class="col m-6-12 l-4-12 mt-pad hm-social end">
+		<h3>Follow Us on Social Media</h3>
+
+		<a class="icon-twitter" href="{{ social.twitter }}" target="_blank" title="Protege Professionals on Twitter"></a>
+		<a class="icon-facebook" href="{{ social.facebook }}" target="_blank" title="Protege Professionals on Facebook"></a>
+		<a class="icon-google-plus" href="{{ social.googlePlus }}" target="_blank" title="Protege Professionals on Google Plus"></a>
+		<a class="icon-linkedin" href="{{ social.linkedin }}" target="_blank" title="Protege Professionals on Linkedin"></a>
+	</div>
+
+	<a class="col m-6-12 l-4-12 mt-pad hm-subscribe" href="/newsletter">
+		<span class="icon-envelope"></span>
+
+		<h3>Subscribe to our eNewsletter</h3>
+	</a>
+</div>
+
+<div class="row pbb mt-pad">
+	<div class="col m-6-12 m-offset-3 center end">
+		<h3>Upcoming Workshops</h3>
+
+		<h4>Business Development &amp; Career Kickstarting</h4>
+
+		<p><strong>28th Nov. 2014</strong> - Oriental Hotel, Lagos</p>
+	</div>
+</div>
+
+<div class="row pbl mt-pad">
+	<div class="col m-6-12 m-offset-3 center end">
+		<h3>{{ social.contactNumber }}</h3>
+
+		<p>Start the conversaton</p>
+	</div>
+</div>
+{% endcache %}
 {% endblock %}

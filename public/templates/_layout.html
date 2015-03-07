@@ -1,73 +1,112 @@
-{#
- # Layout template
- # ---------------
- #
- # This template defines your site’s global layout. It can be
- # “extended” by other templates to fill in the gaps.
- #
- # See Twig’s Template Inheritance documentation for more details:
- # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
- #}
-
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
-	<link rel="home" href="{{ siteUrl }}" />
-
-	<style type="text/css">
-		body { margin: 50px; font-family: sans-serif; background: #fff; }
-		#container { margin: 0 auto; width: 700px;
-			-webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-			        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-		}
-
-		#header, #footer { display: block; color: #fff; background: #da5a47; }
-		#header a, #footer a { color: #fff; }
-		#header { border-radius: 7px 7px 0 0; padding: 25px; }
-		#header:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
-		#header a { text-decoration: none; }
-		#header h1 { float: left; margin: 0; font-weight: normal; font-size: 30px; line-height: 1; }
-		#header nav { display: block; float: right; }
-		#header nav ul { margin: 0; list-style-type: none; }
-		#header nav ul li { float: left; margin-left: 20px; }
-		#header nav ul li a { display: block; margin-top: 4px; line-height: 22px; }
-		#header nav ul li a:hover,
-		#header nav ul li a.active { border-bottom: 2px solid #fff; }
-		#header nav ul li a.active { cursor: default; }
-
-		#content { display: block; padding: 25px; background: #fff; }
-		#content h1 { margin-top: 0; font-size: 35px; font-weight: bold; }
-		#content a { color: #da5a47; text-decoration: none; }
-		#content a:hover { text-decoration: underline; }
-
-		#footer { border-radius: 0 0 7px 7px; padding: 15px; font-size: 12px; text-align: center; }
-	</style>
+	<meta charset="UTF-8">
+	<title>Protege Web</title>
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/assets/css/app.css">
+	<!--<link rel="stylesheet" href="/assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="/assets/css/owl.carousel.theme.css">-->
 </head>
-
 <body>
-	<div id="container">
-		<header id="header">
-			<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
+{% set nav = craft.amNav.getNavRaw("general") %}
 
-			<nav>
-				<ul>
-					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
-				</ul>
-			</nav>
-		</header>
+{% macro addPageToNavigation(page) %}
+<li {% if page.active %} class="active" {% endif %}><a href="{{ page.url }}" title="{{ page.name }}">{{ page.name }}</a></li>
+{% endmacro %}
+<!-- Header begins -->
+<header class="header mt-pad">
+	<div class="row">
+		<a href="/" title="Protege Professionals">
+			<div class="logo">
 
-		<main id="content" role="main">
-			{% block content %}
-				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
-				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
-			{% endblock %}
-		</main>
+				<img src="/assets/img/protege-logo.svg" alt="Protege Professionals" width="200">
+				
+				<h1>Protege professionals</h1>
+			</div>
+		</a>
 
-		<footer id="footer">
-			Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://buildwithcraft.com">Craft</a>
-		</footer>
+		<nav class="nav">
+			<ul class="nav_links">
+			{% for page in nav %}
+				{{ _self.addPageToNavigation(page) }}
+			{% endfor %}
+			</ul>
+		</nav>
+
+		<div class="menu">
+			<div class="bars">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
 	</div>
+</header>
+<!-- Header engds -->
+
+
+{% block content %}
+{% endblock %}
+
+
+
+
+<!-- Footer begins -->
+<footer class="footer mt-pad">
+	<div class="row">
+		<div class="m-7-12">
+			<ul class="m-4-12 l-3-12">
+				<li><a href="about.html">Discover Protege</a></li>
+				<li><a href="/about#the-team">The Team</a></li>
+				<li><a href="services.html">Services</a></li>
+			</ul>
+
+			<ul class="m-4-12 l-3-12">
+				<li><a href="programmes.html">Programmes</a></li>
+				<li><a href="programmes-performance-coaching.html">Performance Coaching</a></li>
+				<li><a href="progammes-executive-training.html">Executive Training</a></li>
+				<li><a href="progammes-executive-training.html">Executive Finishing School</a></li>
+			</ul>
+
+			<ul class="m-4-12 l-3-12">
+				<li><a href="services.html#human-resources">Human Resources</a></li>
+				<li><a href="services.html#hr-outsourcing">HR Outsourcing</a></li>
+				<li><a href="services.html#HR-auditing">HR Auditing</a></li>
+				<li><a href="services.html#recruitment">Recruitment &amp; Selection</a></li>
+			</ul>
+
+			<ul class="m-4-12 l-3-12 end">
+				<li><a href="insights.html">Insights</a></li>
+				<li><a href="insights-resources.html">Resources</a></li>
+				<li><a href="insights-workshops.html">Workshops</a></li>
+				<li><a href="insights-quotes.html">Protege Quotes</a></li>
+			</ul>
+		</div>
+
+		<!--Social Icons begins -->
+		<div class="m-5-12 end social-icons">
+			<span class="icon-twitter"></span>
+			<span class="icon-facebook"></span>
+			<span class="icon-google-plus"></span>
+			<span class="icon-linkedin"></span>
+		</div>
+		<!--Social icons end -->
+	</div>
+
+	<!-- Copyright notice -->
+	<div class="copyright row">
+		<p>Copyright 2014 &copy; Protege Professionals Ltd.</p>
+	</div>
+</footer>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.cycle/3.03/jquery.cycle.all.min.js"></script>
+<script src="/assets/js/TweenMax.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/packery/1.3.2/packery.pkgd.min.js"></script>
+<script src="/assets/js/app.js"></script>
+
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "4ec8920c-9128-4800-af68-dc071b5c0930", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </body>
 </html>

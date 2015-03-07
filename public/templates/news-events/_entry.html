@@ -1,0 +1,48 @@
+{% extends '_layout' %}
+{% block content %}
+<h1 class="page-header">
+	News &amp; Events
+</h1>
+{% include 'news-events/_nav' %}
+<div class="row pbl mt-pad">
+	<div class="pne">
+		<div class="pne_item">
+			<h1>{{ entry.title }}</h1>
+
+			<p class="date"><span>Posted on {{ entry.postDate|date('M j, Y')}} </span></p>
+
+			{% if entry.neCoverImage|length > 0 %}
+				<img src="{{ entry.neCoverImage.first().url }}" alt="{{ entry.title }}">
+			{% endif %}
+
+			<p>{{ entry.neContent }}</p>
+		</div>
+	</div>
+</div>
+
+<div class="row mt-pad"><hr><h3 class="spaced-heading primary-color center">Other News &amp; Events</h3></div>
+
+{% set newsEvents = craft.entries.section('newsEvents').limit(5).id('not ' ~ entry.id) %}
+<div class="row pbl mt-pad">
+	<div class="pne">
+		{% for newsEvent in newsEvents %}
+		<div class="pne_item">
+			<h1>{{ newsEvent.title }}</h1>
+
+			<p class="date"><span>Posted on {{ newsEvent.postDate|date('M j, Y')}} </span></p>
+
+			{% if newsEvent.neCoverImage|length > 0 %}
+				<img src="{{ newsEvent.neCoverImage.first().url }}" alt="{{ newsEvent.title }}">
+			{% endif %}
+
+			<p>{{ newsEvent.neContent|hacksaw(words='100', append='...', allow='<p><img><strong><b><i>') }}</p>
+
+			<p>
+				<a href="{{ newsEvent.url }}" title="{{ newsEvent.title }}" class="button more">Read More</a>
+			</p>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}

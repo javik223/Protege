@@ -1,0 +1,51 @@
+{% extends "_layout" %}
+
+{% block content %}
+	<h1 class="page-header">
+	About Protege
+</h1>
+
+<div class="pbb">&nbsp;</div>
+
+<div class="row mt-pad">
+	<div class="col m-8-12 m-offset-2 end center pbl">
+		{{ entry.intro }}
+	</div>
+</div>
+
+{% set hero = entry.hero.first() %}
+<div class="hero hero-about mt-pad pbl" style="background-image: url({{ hero.image.first().url }});">
+	<div class="row">
+		<h3 class="col s-8-12 m-6-12 end">
+			{{ hero.text }}
+		</h3>
+	</div>
+</div>
+
+<div class="row mt-pad pbl">
+	<div class="col m-6-12 pbb">
+		{{ entry.aboutBody }}
+	</div>
+
+	<div class="col m-5-12 m-offset-1 end">
+		<h4 class="primary-color nmt">
+			{{ entry.callout }}
+		</h4>
+	</div>
+</div>
+
+{% set founder = entry.founder.first() %}
+<div class="row pbl mt-pad">
+	<div class="col m-8-12 m-offset-2 end">
+		<div class="row founder">
+			<div class="col m-4-12 founder_image">
+				<img src="{{ founder.photo.first().url }}" alt="Nwamaka Onyiuke" width="200">
+			</div>
+
+			<div class="col m-7-12 m-offset-1 end">
+				{{ founder.text }}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

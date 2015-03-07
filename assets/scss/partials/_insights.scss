@@ -68,22 +68,29 @@
 				@include transform( scale(1.3) );
 			}
 		}
+
+
+		&:hover {
+			a {
+				color: color($primary);
+			}
+		}
 	}
 }
 .pp-blog, {
 	.pp_item {
-		@extend .m-4-12;
+		@extend .m-3-12;
 		padding-bottom: $padding;
 	}
 
 	a {
 		font-weight: 400;
-		color: color($primary);
+		color: color($gray);
 		@include inline-block;
 		margin-top: $padding;
 
 		&:hover {
-			color: color($primary, dark);
+			color: color($primary);
 		}
 	}
 }
@@ -185,6 +192,8 @@
 				list-style-type: decimal;
 				margin-left: $padding;
 				padding-left: $padding;
+				line-height: 1.7;
+				margin-bottom: $padding;
 			}
 		}
 	}

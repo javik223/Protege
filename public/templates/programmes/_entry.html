@@ -1,0 +1,25 @@
+{% extends '_layout' %}
+{% block content %}
+<h1 class="page-header pbl">
+	{{ entry.title }}
+</h1>
+
+<div class="row pbb">
+	<div class="hero hero-pc mt-pad" style="background-image: url('{{ entry.coverImage.first().url }}');">
+		<div class="col s-8-12 m-6-12 end">
+			<h4 class="pbl">{{ entry.landingPageText|hacksaw() }}</h4>
+		</div>
+	</div>
+</div>
+
+{{ entry.body }}
+
+<div class="row pbl mt-pad">
+	<div class="col m-6-12 m-offset-3 center end">
+		<h3>{{ social.contactNumber }}</h3>
+
+		<p>Start the conversaton</p>
+	</div>
+</div>
+
+{% endblock %}

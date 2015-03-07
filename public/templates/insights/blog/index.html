@@ -1,0 +1,49 @@
+{% extends "_layout" %}
+{% block content %}
+<h1 class="page-header">
+	INSIGHTS - BLOG
+</h1>
+
+{% include 'insights/_nav' %}
+
+{% set featuredPost = craft.entries.section('blog').first() %}
+<!-- Featured post -->
+<div class="row pbl">
+	<div class="featured mt-pad">
+		<h1 class="">{{ featuredPost.title }}</h1>
+
+		<div class="featured_image">
+			<img src="{{ featuredPost.blogCoverImage.first().url }}" alt="{{ featuredPost.title }}">
+		</div>
+
+		<p class="synopsis">{{ featuredPost.blogIntro }}</p>
+
+		<a href="{{ featuredPost.url }}" class="button" title="{{ featuredPost.title }}">Read More</a>
+	</div>
+</div>
+
+<!-- Promoted Posts -->
+<div class="row mt-pad">
+	<div class="pp pp-resources">
+		<h3>More From The Blog</h3>
+
+		{% set otherPosts = craft.entries.section('blog').limit(4) %}
+
+		<div class="row pbb">
+			{% for post in otherPosts %}
+			<div class="pp_item">
+				<a href="{{ post.url }}" title="{{ post.title }}"><div class="pp_item_img"><img src="{{ post.blogCoverImage.first().getUrl('thumbMedium')}}" alt="{{ post.title }}"></div></a>
+
+				<a href="{{ post.url }}">{{ post.title }}</a>
+			</div>
+			{% endfor %}
+		</div>
+
+		<div class="row center pbb">
+			<a href="insights-blog.html" class="button">Load more posts</a>
+		</div>
+
+	</div>
+</div>
+
+{% endblock %}

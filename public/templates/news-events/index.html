@@ -1,0 +1,39 @@
+{% extends '_layout' %}
+{% block content %}
+<h1 class="page-header">
+	News &amp; Events
+</h1>
+
+{% include 'news-events/_nav' %}
+{% paginate craft.entries.section('newsEvents').limit(10) as newsEvents %}
+<div class="row pbl">
+	<div class="pne">
+		{% for newsEvent in newsEvents %}
+		<div class="pne_item">
+			<h1>{{ newsEvent.title }}</h1>
+
+			<p class="date"><span>Posted on {{ newsEvent.postDate|date('M j, Y')}} </span></p>
+
+			{% if newsEvent.neCoverImage|length > 0 %}
+				<img src="{{ newsEvent.neCoverImage.first().url }}" alt="{{ newsEvent.title }}">
+			{% endif %}
+
+			<p>{{ newsEvent.neContent|hacksaw(words='100', append='...', allow='<p><img><strong><b><i>') }}</p>
+
+			<p>
+				<a href="{{ newsEvent.url }}" title="{{ newsEvent.title }}" class="button more">Read More</a>
+			</p>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+
+<div class="row pbl">
+	<div class="col m-6-12 m-offset-3 end center">
+		{% if paginate.prevUrl %}<a href="{{ paginate.prevUrl }}" class="button">&larr; Previous</a> &nbsp; &nbsp;{% endif %}
+		{% if paginate.nextUrl %}<a href="{{ paginate.nextUrl }}" class="button">Next &rarr;</a></div>{% endif %}
+</div>
+{% endpaginate %}
+
+{% endblock %}

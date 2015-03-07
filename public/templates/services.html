@@ -1,0 +1,121 @@
+{% extends '_layout' %}
+{% block content %}
+<h1 class="page-header">
+	Services
+</h1>
+
+<div class="hero hero-services pbl" style="background-image: url('{{ entry.introHeaderImage.first().url }}')">
+	<div class="row">
+		<h3 class="s-9-12 m-5-12">
+			{{ entry.introheader }}
+		</h3>
+	</div>
+</div>
+
+<div class="row mt-pad pbl">
+	<div class="col m-8-12 m-offset-2 l-6-12 l-offset-3 end center pbl">
+		{{ entry.introText }}
+	</div>
+
+	<div class="row">
+		<div class="col m-8-12 m-offset-2 end">
+			<div class="col m-5-12 mt-pad pbb">	
+				{{ entry.servicesBlockQuote }}
+			</div>
+
+			{% set lists = entry.servicesList %}
+			<div class="col m-6-12 mt-pad">
+				<ul class="list-primary">
+					{% for list in lists %}
+						<li>{{ list.servicesLists }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% set individual = entry.serviceIndividuals.first() %}
+
+<div class="row">
+	<h4 class="col s-12-12 small-caps-heading center pbb">{{ individual.sectionTitle }}</h4>
+</div>
+
+<!--Performance Coaching-->
+<div class="row pbl">
+	<div class="hero hero-pc mt-pad" style="background-image: url('{{ individual.coverImage.first().url }}')">
+		<div class="col s-10-12 m-6-12 end">
+			<h3>{{ individual.header }}</h3>
+
+			{{ individual.body }}
+			
+			<a href="{{ individual.buttonUrl }}" class="button button-inverse">{{ individual.buttonText }}</a>
+		</div>
+	</div>
+</div>
+
+{% set executives = entry.serviceExecutives.first() %}
+<div class="row mt-pad pbl">
+	<div class="col m-8-12 m-offset-2 end">
+		<h4 class="col s-12-12 small-caps-heading center pbb">
+			{{ executives.sectionTitle }}
+		</h4>
+
+		<p class="center pbl">
+			{{ executives.introText }} 
+		</p>
+
+		<div class="row pbl">
+			<div class="col m-6-12 pbb pr10">
+				<img src="{{ executives.executiveTrainingImage.first().url }}" alt="Protege Executive Training">
+				<h4><strong>{{ executives.executiveTrainingTitle }}</strong></h4>
+
+				<p class="small">
+					{{ executives.executiveTrainingText }}
+				</p>
+			</div>
+
+			<div class="col m-6-12 pl10">
+				<img src="{{ executives.executiveFinishingSchoolImage.first().url }}" alt="Protege Finishing School">
+
+				<h4><strong>{{ executives.executiveFinishingTitle }}</strong></h4>
+
+				<p class="small">
+					{{ executives.executiveFinishingSchoolText}}
+				</p>
+			</div>
+		</div>
+
+		<div class="col m-12-12 center pbl">
+			<a href="{{ executives.buttonUrl }}" class="button">{{ executives.executiveButtonText }}</a>
+		</div>
+	</div>
+</div>
+
+{% set hr = entry.hr.first() %}
+<!-- Human Resources -->
+<div class="row" id="human-resources">
+	<h4 class="col s-12-12 small-caps-heading center pbb">{{ hr.hrTitle }}</h4>
+</div>
+
+<!--Performance Coaching-->
+<div class="hero hero-hr mt-pad" style="background-image: url('{{ hr.coverImage.first().url}}');">
+	<div class="row">
+		<div class="col s-8-12 m-6-12 end">
+			<h3>{{ hr.header }}</h3>
+
+			{{ hr.body }}
+		</div>
+	</div>
+</div>
+
+
+<div class="row mt-pad pbl">
+	<div class="row mt-pad center">
+		<div class="col m-6-12 m-offset-3 end">
+			{{ hr.hrMainBody }}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

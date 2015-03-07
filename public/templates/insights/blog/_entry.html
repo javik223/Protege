@@ -1,0 +1,51 @@
+{% extends "_layout" %}
+{% block content %}
+<h1 class="page-header">
+	INSIGHTS - BLOG
+</h1>
+
+{% include 'insights/_nav' %}
+<div class="row pbl">
+	<div class="blog-post mt-pad">
+		<h1 class="blog-post_title">Tapping the Power of Your Morning Routine</h1>
+		
+		<div class="blog-post_details">
+			<p class="blog-post_author"><strong>{{ entry.blogAuthor }}</strong></p>
+
+			<div class="blog-post_share">
+			<h4 class="light small">Share this post</h4>
+
+				<span class='st_sharethis'></span>
+				<span class='st_facebook'></span>
+				<span class='st_twitter'></span>
+				<span class='st_linkedin'></span>
+			</div>
+		</div>
+
+		<div class="blog-post_content pbl">
+			<img src="{{ entry.blogCoverImage.first().url }}" alt="{{ entry.title }}">
+
+			{{ entry.blogContent }}
+		</div>
+
+	</div>
+</div>
+
+<!-- Promoted Posts -->
+<div class="row mt-pad">
+	<div class="pp pp-resources">
+		<h3>Other articles you will like</h3>
+
+		{% set otherPosts = craft.entries.section('blog').limit(4) %}
+
+		<div class="row pbb">
+			{% for post in otherPosts %}
+			<div class="pp_item">
+				<a href="{{ post.url }}" title="{{ post.title }}"><div class="pp_item_img"><img src="{{ post.blogCoverImage.first().getUrl('thumbMedium')}}" alt="{{ post.title }}"></div></a>
+
+				<a href="{{ post.url }}">{{ post.title }}</a>
+			</div>
+			{% endfor %}
+	</div>
+</div>
+{% endblock %}

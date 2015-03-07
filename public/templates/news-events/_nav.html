@@ -1,0 +1,11 @@
+{% set newsNav = craft.amNav.getNavRaw("newsEvents") %}
+<!-- min nav-->
+<div class="row pbb">
+	<div class="mini-nav">
+		<div class="center">
+			{% for page in newsNav %}
+				<a href="{{ page.url }}" title="{{ page.name }}" {% if craft.request.getSegment(2) == page.name|lower %} class="active" {% endif %}>{{ page.name}}</a>
+			{% endfor %}
+		</div>
+	</div>
+</div>

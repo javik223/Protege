@@ -1,0 +1,97 @@
+{% extends "_layout" %}
+
+{% block content %}
+<h1 class="page-header">
+	INSIGHTS
+</h1>
+
+{% include 'insights/_nav' %}
+
+{% set featuredPost = craft.entries.section('blog').first() %}
+<!-- Featured post -->
+<div class="row pbl">
+	<div class="featured mt-pad">
+		<h1 class="">{{ featuredPost.title }}</h1>
+
+		<div class="featured_image">
+			<img src="{{ featuredPost.blogCoverImage.first().url }}" alt="{{ featuredPost.title }}">
+		</div>
+
+		<p class="synopsis">{{ featuredPost.blogIntro }}</p>
+
+		<a href="{{ featuredPost.url }}" class="button" title="{{ featuredPost.title }}">Read More</a>
+	</div>
+</div>
+
+
+<!-- Promoted Posts -->
+<div class="row mt-pad">
+	<div class="pp pp-blog">
+		<h3>More From The Blog</h3>
+
+		{% set otherPosts = craft.entries.section('blog').limit(4) %}
+
+		<div class="row pbb">
+			{% for post in otherPosts %}
+			<div class="pp_item">
+				<a href="{{ post.url }}" title="{{ post.title }}"><div class="pp_item_img"><img src="{{ post.blogCoverImage.first().getUrl('thumbMedium')}}" alt="{{ post.title }}"></div></a>
+
+				<a href="{{ post.url }}">{{ post.title }}</a>
+			</div>
+			{% endfor %}
+		</div>
+
+		<div class="row center pbb">
+			<a href="/insights/blog" class="button">View all blog posts</a>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+<div class="pp pp-resources mt-pad">
+	<h3>Resources</h3>
+
+	<div class="row pbl">
+		<div class="pp_item">
+			<div class="pp_item_img"><img src="/assets/img/r1.jpg" alt="More from the blog"></div>
+
+			<a href="insights-blog-single.html">Preparing for an executive leadership position</a>
+		</div>
+
+		<div class="pp_item">
+			<div class="pp_item_img"><img src="/assets/img/r2.jpg" alt="More from the blog"></div>
+
+			<a href="insights-blog-single.html">The holy grail in personal performance</a>
+		</div>
+
+		<div class="pp_item">
+			<div class="pp_item_img"><img src="/assets/img/r3.jpg" alt="More from the blog"></div>
+
+			<a href="insights-blog-single.html">In defence of the non-releting but innocuous workaholic</a>
+		</div>
+
+		<div class="pp_item">
+			<div class="pp_item_img"><img src="/assets/img/r4.jpg" alt="More from the blog"></div>
+
+			<a href="insights-blog-single.html">In defence of the non-releting but innocuous workaholic</a>
+		</div>
+	</div>
+
+	<div class="row center pbb">
+		<a href="insights-resources.html" class="more">See all resources <span class="icon-circle-right"></span></a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="pp pp-quote mt-pad">
+
+		{% set quote = craft.entries.section('quotes').first() %}
+		<h3>Protege Quotes</h3>
+
+		<blockquote>{{ quote.quoteText }} <cite>{{ quote.quoteAuthor }}</cite></blockquote>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends '_layout' %}
+{% block content %}
+{% cache %}
+<h1 class="page-header pbl">
+	Protege Programmes
+</h1>
+
+{% set programmes = craft.entries.section('programmes').type('programmes') %}
+
+{% for programme in programmes %}
+<div class="row pbb">
+	<div class="hero hero-pc mt-pad" style="background-image: url('{{ programme.coverImage.first().url }}');">
+		<div class="col s-9-12 m-6-12 end">
+			<h3>{{ programme.title }}</h3>
+
+			<p class="pbl">
+				{{ programme.landingPageText|hacksaw() }}
+			</p>
+			
+			<a href="{{ programme.url }}" class="button button-inverse" title="{{ programme.title }}">View Programme Details</a>
+		</div>
+	</div>
+</div>
+{% endfor %}
+
+<!-- Special Programms -->
+{% set specialProgrammes = craft.entries.section('programmes').type('specialProgrammes') %}
+<div class="row center">
+	<h4 class="col small-caps-heading center pbb mt-pad">Special Programmes / Events</h4>
+</div>
+
+{% for sp in specialProgrammes %}
+<div class="row pbb">
+	<div class="hero hero-cp mt-pad" style="background-image: url('{{ sp.coverImage.first().url }}');">
+		<div class="col s-9-12 m-6-12 end">
+			<h3>{{ sp.title }}</h3>
+
+			<p class="pbl">{{ sp.landingPageText|hacksaw }}</p>
+			
+			<a href="{{ sp.url }}" class="button" title="{{ sp.title }}">View Programme Details</a>
+		</div>
+	</div>
+</div>
+{% endfor %}
+{% endcache %}
+{% endblock %}

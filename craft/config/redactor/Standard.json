@@ -1,5 +1,8 @@
 {
-	buttons: ['html','formatting','bold','italic','unorderedlist','orderedlist','link','image','video'],
+	buttons: ['html','formatting','bold','italic','unorderedlist','orderedlist','link','image','video', 'div'],
 	plugins: ['fullscreen','video'],
-	toolbarFixed: true
+	toolbarFixed: true,
+	replaceDivs: false,
+	cleanOnPaste: false,
+	allowedTags: ['div', 'p', 'pre', 'span', 'strong', 'em', 'blockquote', 'cite', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'b', 'i', 'img']
 }
